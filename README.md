@@ -6,3 +6,5 @@ You can navigate through the posts via the "<> Code" tab or via direct links bel
 
 
 # Posts
+
+- [Implement a JSON Parser in C# and .NET](2016/07/implement_json_parser_cshap_dotnet.md) (July 2016)
