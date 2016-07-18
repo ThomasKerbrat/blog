@@ -1,9 +1,11 @@
 ---
 layout: post
 title: "AngularJS Controller Inheritance using $scope"
-excerpt: ""
 date: 2016-07-18 21:30:45 +0200
 ---
+
+# AngularJS Controller Inheritance using $scope
+
 
 ## Context
 
