@@ -8,3 +8,4 @@ You can navigate through the posts via the "<> Code" tab or via direct links bel
 # Posts
 
 - [Implement a JSON Parser in C# and .NET](2016/07/implement_json_parser_cshap_dotnet.md) (July 2016)
+- [AngularJS Controller Inheritance](2016/07/angularjs_controller_inheritance.md) (July 2016)
