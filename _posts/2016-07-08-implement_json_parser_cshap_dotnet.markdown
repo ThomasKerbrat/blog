@@ -1,19 +1,25 @@
+---
+layout: post
+title: "Implement a JSON Parser in C# and .NET"
+date: 2016-07-08 00:00:00 +0200
+---
+
 # Implement a JSON Parser in C# and .NET
 
 # Summary
 
 - [The JSON Langage](#the-json-langage)
- - [Data Structure](#data-structure)
- - [Grammar](#grammar)
- - [Complying to the SOLID principles](#complying-to-the-solid-principles)
+  - [Data Structure](#data-structure)
+  - [Grammar](#grammar)
+  - [Complying to the SOLID principles](#complying-to-the-solid-principles)
 - [The Parsing Operation](#the-parsing-operation)
- - [Tokens and the Tokenizer](#tokens-and-the-tokenizer)
- - [The Parser](#the-parser)
- - [The Parser Output](#the-parser-output)
+  - [Tokens and the Tokenizer](#tokens-and-the-tokenizer)
+  - [The Parser](#the-parser)
+  - [The Parser Output](#the-parser-output)
 - [Consuming the parsed JSON](#consuming-the-parsed-json)
- - [The Visitor Design Pattern](#the-visitor-design-pattern)
- - [Visiting the AST](#visiting-the-ast)
- - [The .NET Framework comes handy](#the-net-framework-comes-handy)
+  - [The Visitor Design Pattern](#the-visitor-design-pattern)
+  - [Visiting the AST](#visiting-the-ast)
+  - [The .NET Framework comes handy](#the-net-framework-comes-handy)
 - [Conclusion](#conclusion)
 
 
