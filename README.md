@@ -7,6 +7,7 @@ You can navigate through the posts via the "<> Code" tab or via direct links bel
 
 # Posts
 
+- [Conditional UI Layout](2016/10/conditional_ui_layout_angularjs.md) (October 2016)
 - [Run NodeJS 4 and 6 on Windows](2016/08/run_nodejs_4_6_windows.md) (August 2016)
 - [How to expose your JavaScript library?](2016/08/how_to_expose_your_javascript_library.md) (August 2016)
 - [Argument Labels with ES6 Destructuring](2016/07/argument_labels_with_es6_destructuring.markdown) (July 2016)
