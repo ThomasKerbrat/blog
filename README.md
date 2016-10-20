@@ -3,10 +3,6 @@
 This repository holds Markdown files of blog posts on various computer science subjects.
 You can navigate through the posts via the "<> Code" tab or via direct links bellow.
 
-
-
-# Posts
-
 - [Test time-dependent service in AngularJS](2016/10/test_time_dependent_service_angularjs.md) (October 2016)
 - [Conditional UI Layout](2016/10/conditional_ui_layout_angularjs.md) (October 2016)
 - [Run NodeJS 4 and 6 on Windows](2016/08/run_nodejs_4_6_windows.md) (August 2016)
