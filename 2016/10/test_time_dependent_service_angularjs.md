@@ -7,7 +7,7 @@ The use case here is having heart beat messages sent by a backend to ensure the 
 If the frontend does not receive heart beats anymore, it should close the application because of whatever reason.
 
 The trick here is to control the flow of time in our tests.
-Creating timeouts and interval in the tests is just not an option.
+Creating timeouts and intervals in the tests is just not an option.
 It would slow down the execution of tests, and the syntax would be too overwhelming.
 
 In order to control the flow of time, we will call a doctor to the rescue!
@@ -18,7 +18,7 @@ The `ngMock` module comes with handy functions on `$timeout` and `$interval`.
 They are called `flush` on both services.
 `flush` takes an optional argument representing a number of milliseconds to move forward.
 
-When we call `flush`, we "jump" into the future.
+When we call `flush`, we "pull" the future to use, right now.
 If no parameter is given to `flush`, we basically say to `$timeout` or `$interval` to go as far as they can.
 If a parameter is given, `flush` will execute functions up to the given number of milliseconds.
 
@@ -72,7 +72,7 @@ And if we wanted to trigger it once again, we would need to flush an amount of 1
 AngularJS provides a useful interface to control the execution order of both timeouts and intervals.
 It improves speed and allow for a cleaner and shorter tests.
 
-One thing to note is that it might be necessary to mock `Date.now()` function to fake some timestamps.
+One thing to note is that it might be necessary to mock `Date.now()` function to fake timestamps.
 Flushes sequentially trigger callbacks in the same cycle of the event loop.
 So, if time calculation happens relative to current execution time,
 it is preferred to use `Date.now()` instead of `new Date.getTime()`.
