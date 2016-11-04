@@ -79,4 +79,86 @@ The prototype being an instance itself, the process repeats until the final prot
 
 This is referred as the **prototype chain**.
 It must not be confused with inheritance.
-Looking through the prototype chain to perform a property lookup is actually **delegation**.
+This mechanism is actually **delegation**.
+
+## Simulating inheritance
+
+Now that we know about the prototype chain, we have a better idea on where inheritance behavior comes from.
+
+We want `MyError` to prototypically inherits from `Error`.
+As we saw, a prototype is just an object.
+So our prototype should be an instance of `Error`.
+
+``` javascript
+function MyError(message) {
+  this.name = 'MyError';
+  this.message = message || 'Default message';
+}
+
+MyError.prototype = new Error();
+MyError.prototype.constructor = MyError;
+
+let error = new MyError();
+```
+
+By default, each prototype comes with an implicit `constructor` property who's value is the constructor function.
+Unfortunately, by assigning the prototype to a new object, we break this behavior.
+We must set back the `constructor` property to our constructor function.
+
+Notice how we did not defined a `stack` property on `MyError`?
+However, if we access it with `error.stack` we get a value back.
+This is because the lookup went through the prototype chain until it encountered a property matching `stack`.
+
+To have an idea of what it looks like here is the `error` with its prototype chain represented under the `__proto__` property:
+
+``` javascript
+{
+  message: "Default message",
+  name: "MyError",
+  // No property 'stack' here
+  __proto__: {
+    constructor: function MyError(message),
+    // Here is a property named 'stack'. No need to go further.
+    stack: "Error\n    at <anonymous>:6:21",
+    __proto__: {
+      constructor: function Error(),
+      message: "",
+      name: "Error",
+      toString: function toString()
+      __proto__: {
+        ...
+        constructor: function Object(),
+        hasOwnProperty: function hasOwnProperty(),
+        ...
+      }
+    }
+  }
+}
+```
+
+The lookup went only to the `MyError` prototype to find a `stack` property because it is an instance of `Error`.
+Instances of `Error` have a `stack` property.
+
+If we want to know if `error` has a property, we use `error.hasOwnProperty('name')`.
+Notice that `hasOwnProperty` is defined on the Object's prototype.
+To access `error.hasOwnProperty`, the lookup went all the way to the Object's prototype.
+
+That's how we have an inheritance behavior with delegation.
+
+# Conclusion
+
+Here is a code snippet to get the prototype chain from any value in JavaScript:
+
+``` javascript
+Object.getPrototypeChain = function getPrototypeChain(obj) {
+  if (typeof obj == 'undefined' || typeof obj === 'null') return [];
+  let next = obj, chain = [];
+  while (next !== null) {
+    chain.push(next = Object.getPrototypeOf(next));
+  }
+  return chain;
+}
+```
+
+Use it like this: `Object.getPrototypeChain(123)`.
+It should return an array like this: `[Number, Object, Null]`.
