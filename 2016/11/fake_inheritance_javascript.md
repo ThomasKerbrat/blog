@@ -1,10 +1,12 @@
 
 # Fake inheritance in JavaScript
 
-## The Constructor Function
-
 JavaScript does not have classes or any sort of mold to cast object from.
-As a result, JavaScript does not support inheritance as we understand it in classical Object Oriented.
+As a result, JavaScript does not support inheritance as we understand it in classical Object Oriented Programming.
+
+
+
+## The Constructor Function
 
 However, any function can act as a constructor.
 It works by calling the function preceded by the `new` keyword.
@@ -38,55 +40,46 @@ let error2 = new error.constructor();
 
 The `error2` variable will be an instance of `MyError`.
 
+
+
 ## The Prototype
 
-What happens if I try to access the `myProperty` property on `error`?
+What happens if we try to access the `myProperty` property on `error`?
 
 ``` javascript
 error.myProperty; // undefined
 ```
 
-The expression is evaluated to `undefined`, which is its own type: `typeof undefined === 'undefined'`.
-To understand the inner working of that lookup, we must learn about the prototype.
+The expression is evaluated to `undefined`.
+Indeed, the `error` object does not have a `myProperty` property on it.
 
-A prototype is just an object.
-It is used as a fallback in case a property does not exist on an object, in our case `error`.
-The prototype is associated to a constructor function.
-For the `MyError` constructor, we can refer to it as `MyError.prototype`.
-
-By default, our functions' prototypes are an empty object:
-
-``` javascript
-MyError.prototype; // {}
-```
-
-The nice thing about prototype is that they are used as a fallback.
 Now let's defined the `myProperty` property on the `MyError` prototype:
 
 ``` javascript
 MyError.prototype.myProperty = 3712;
 error.myProperty; // 3712
-let error2 = new MyError();
-error2.myProperty; // 3712
 ```
 
 Given any instance of `MyError`, we can now access `myProperty` and will return `3712`.
 The `myProperty` property does not exists on the `error` instance.
 It is defined on its prototype.
 
-If the property does not exists on the instance, it will check on its prototype.
-The prototype being an instance itself, the process repeats until the final prototype of all objects has been reached.
+If the property does not exists on an object, it will check on its prototype.
+The prototype being an object itself, the prototype has a prototype.
+Hence, the process repeats until the final prototype of all objects has been reached.
 
 This is referred as the **prototype chain**.
 It must not be confused with inheritance.
 This mechanism is actually **delegation**.
+
+
 
 ## Simulating inheritance
 
 Now that we know about the prototype chain, we have a better idea on where inheritance behavior comes from.
 
 We want `MyError` to prototypically inherits from `Error`.
-As we saw, a prototype is just an object.
+As we saw, a prototype is an object.
 So our prototype should be an instance of `Error`.
 
 ``` javascript
@@ -103,13 +96,14 @@ let error = new MyError();
 
 By default, each prototype comes with an implicit `constructor` property who's value is the constructor function.
 Unfortunately, by assigning the prototype to a new object, we break this behavior.
-We must set back the `constructor` property to our constructor function.
+We must set back the `constructor` property to our `MyError` function.
+Otherwise, the `constructor` property lookup will find a match in the prototype's prototype and return the `Error` function.
 
 Notice how we did not defined a `stack` property on `MyError`?
 However, if we access it with `error.stack` we get a value back.
 This is because the lookup went through the prototype chain until it encountered a property matching `stack`.
 
-To have an idea of what it looks like here is the `error` with its prototype chain represented under the `__proto__` property:
+To have an idea of what it looks like, here is the `error` with its prototype chain represented under the `__proto__` property:
 
 ``` javascript
 {
@@ -129,7 +123,7 @@ To have an idea of what it looks like here is the `error` with its prototype cha
         ...
         constructor: function Object(),
         hasOwnProperty: function hasOwnProperty(),
-        ...
+        __proto__: null
       }
     }
   }
@@ -145,7 +139,11 @@ To access `error.hasOwnProperty`, the lookup went all the way to the Object's pr
 
 That's how we have an inheritance behavior with delegation.
 
+
+
 # Conclusion
+
+Thanks to the prototype chain and delegation, we can reproduce an inheritance _behavior_.
 
 Here is a code snippet to get the prototype chain from any value in JavaScript:
 
