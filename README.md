@@ -3,6 +3,7 @@
 This repository holds Markdown files of blog posts on various computer science subjects.
 You can navigate through the posts via the "<> Code" tab or via direct links bellow.
 
+- [Dependency Inversion Principle and Dependency Injection](2016/12/dependency-inversion-vs-injection.md) (December 2016)
 - [Fake inheritance in JavaScript](2016/11/fake_inheritance_javascript.md) (November 2016)
 - [Test time-dependent service in AngularJS](2016/10/test_time_dependent_service_angularjs.md) (October 2016)
 - [Conditional UI Layout](2016/10/conditional_ui_layout_angularjs.md) (October 2016)
