@@ -46,7 +46,7 @@ This will be the role of the application to glue all the pieces together.
 In the end, a customer application will depend on all its dependencies' dependencies.
 This is where we wire up all the dependencies stuff:
 
-- dependency resolution (inverse of inversion)
+- dependency resolution (when we choose which dependencies will fulfil which abstractions)
 - dependency injection (by hand or with specialized libraries)
 
 Here is a pseudo-C# code sample showing both concepts working together:
