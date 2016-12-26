@@ -29,7 +29,7 @@ LoggerPackage:Logger
 BusinessPackage:BusinessService -> CompanyPackage:BusinessLogger
 BusinessPackage:AnotherBusinessService -> CompanyPackage:BusinessLogger
 CompanyAdaptorsPackage:BusinessLoggerAdaptor -> [CompanyPackage:BusinessLogger, LoggerPackage:Logger]
-ApplicationPackage:Programm -> [LoggerPackage:Logger, CompanyAdaptorsPackage:BusinessLoggerAdaptor, BusinessPackage:BusinessService]
+ApplicationPackage:Program -> [LoggerPackage:Logger, CompanyAdaptorsPackage:BusinessLoggerAdaptor, BusinessPackage:BusinessService]
 ```
 
 ## Injection
@@ -87,11 +87,11 @@ using CompanyPackage.BusinessLogger;
 using LoggerPackage.Logger;
 
 namespace CompanyAdaptorsPackage {
-    public class BusinessLoggerAdaptor : BusinessLogger {
+    public class BusinessLoggerAdaptor : BusinessLogger {
         private Logger logger;
 
         // The logger instance is injected.
-        public ApplicationLoggerAdaptor(Logger logger) {
+        public BusinessLoggerAdaptor(Logger logger) {
             this.logger = logger;
         }
 
