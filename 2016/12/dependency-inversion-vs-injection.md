@@ -41,6 +41,10 @@ A common practice is to *inject* the dependencies via the object’s constructor
 In other words, no re-usable component should use the `new` keyword to instantiate a dependency, whether it be an abstraction or a concretion.
 This will be the role of the application to glue all the pieces together.
 
+Furthermore, when a class instantiate its dependency with the new keyword, that means it has access to the concrete type.
+This is the opposite of the Dependency Inversion Principle.
+In practice, DIP is used alongside Dependency Injection, and this is why the two are often confused.
+
 # Altogether
 
 In the end, a customer application will depend on all its dependencies' dependencies.
