@@ -35,11 +35,11 @@
 </p>
 
 <pre>
-  LoggerPackage:Logger
-  BusinessPackage:BusinessService -> CompanyPackage:BusinessLogger
-  BusinessPackage:AnotherBusinessService -> CompanyPackage:BusinessLogger
-  CompanyAdaptorsPackage:BusinessLoggerAdaptor -> [CompanyPackage:BusinessLogger, LoggerPackage:Logger]
-  ApplicationPackage:Program -> [LoggerPackage:Logger, CompanyAdaptorsPackage:BusinessLoggerAdaptor, BusinessPackage:BusinessService]
+LoggerPackage:Logger
+BusinessPackage:BusinessService -> CompanyPackage:BusinessLogger
+BusinessPackage:AnotherBusinessService -> CompanyPackage:BusinessLogger
+CompanyAdaptorsPackage:BusinessLoggerAdaptor -> [CompanyPackage:BusinessLogger, LoggerPackage:Logger]
+ApplicationPackage:Program -> [LoggerPackage:Logger, CompanyAdaptorsPackage:BusinessLoggerAdaptor, BusinessPackage:BusinessService]
 </pre>
 
 <h2>Injection</h2>
